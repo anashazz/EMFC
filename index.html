@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMFC - Epic Mac Fan Controller</title>
+    <!-- Load Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Load Font Awesome (for FAS and FAB icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- Load Google Material Symbols (specifically for the Security icon) -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <style>
+        /* Custom styles for the sleek dark theme */
+        :root {
+            --dark-blue: #111827; /* Near black */
+            --primary-blue: #1e40af; /* Deep Blue 800 */
+            --accent-cyan: #0891b2; /* Cyan 600 */
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark-blue);
+            color: #d1d5db; /* Light gray text */
+        }
+        
+        /* Custom Scrollbar Styles for aesthetic appeal */
+        body::-webkit-scrollbar {
+            width: 12px; /* width of the scrollbar */
+        }
+
+        body::-webkit-scrollbar-track {
+            background: var(--dark-blue); /* dark track background */
+        }
+
+        body::-webkit-scrollbar-thumb {
+            background-color: var(--accent-cyan); /* Cyan scrollbar color */
+            border-radius: 20px; /* rounded corners */
+            border: 3px solid var(--dark-blue); /* padding around thumb */
+        }
+        
+        .hero-gradient {
+            /* Sleek, deep tech gradient */
+            background-image: linear-gradient(135deg, var(--dark-blue) 0%, #1e3a8a 100%); 
+        }
+        .btn-primary {
+            background-color: var(--accent-cyan);
+            box-shadow: 0 4px 14px 0 rgba(8, 145, 178, 0.4);
+            transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+        }
+        .btn-primary:hover {
+            background-color: #06b6d4; /* Cyan 500 */
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px 0 rgba(8, 145, 178, 0.6);
+        }
+        /* Custom Fan SVG Icon (CSS animation) */
+        .fan-icon {
+            animation: spin 2s linear infinite;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        /* Material Symbols specific styling to match Font Awesome size/color */
+        .material-symbols-outlined {
+          font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+          font-size: 32px; /* Matching the h-8 w-8 size */
+        }
+    </style>
+</head>
+<body class="min-h-screen antialiased">
+
+    <!-- Header & Navigation -->
+    <header class="bg-gray-900/90 backdrop-blur-sm sticky top-0 z-20 border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <!-- Logo/Title -->
+            <a href="#" class="flex items-center space-x-2">
+                <!-- SVG Icon inline (Kept the custom fan icon) -->
+                <svg class="w-8 h-8 text-cyan-500 fan-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="48" fill="none" stroke="currentColor" stroke-width="4" opacity="0.3"/>
+                    <circle cx="50" cy="50" r="10" fill="#1e40af"/>
+                    <!-- Blades -->
+                    <path d="M 50 50 L 50 15 C 60 25, 75 30, 75 50 Z" fill="currentColor" opacity="0.8" transform="rotate(0, 50, 50)"/>
+                    <path d="M 50 50 L 50 15 C 60 25, 75 30, 75 50 Z" fill="currentColor" opacity="0.8" transform="rotate(120, 50, 50)"/>
+                    <path d="M 50 50 L 50 15 C 60 25, 75 30, 75 50 Z" fill="currentColor" opacity="0.8" transform="rotate(240, 50, 50)"/>
+                    <circle cx="50" cy="50" r="3" fill="white"/>
+                </svg>
+                <span class="text-2xl font-black text-white tracking-wider">EMFC</span>
+            </a>
+            <!-- Simple Navigation -->
+            <nav class="hidden md:flex space-x-8">
+                <a href="#features" class="text-gray-400 hover:text-cyan-400 transition duration-150 font-medium">Features</a>
+                <a href="#compatibility" class="text-gray-400 hover:text-cyan-400 transition duration-150 font-medium">Compatibility</a>
+                <a href="#download" class="text-gray-400 hover:text-cyan-400 transition duration-150 font-medium">Download</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient pt-24 pb-20 text-center relative overflow-hidden">
+        <!-- Background element for visual interest -->
+        <div class="absolute inset-0 opacity-10" style="background: radial-gradient(circle at 50% 10%, #06b6d4, transparent 70%);"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <h1 class="text-4xl sm:text-6xl font-extrabold leading-tight mb-4 tracking-tight text-white">
+                <span class="text-cyan-400">EPIC</span> Thermal Control for Legacy Mac
+            </h1>
+            <p class="text-xl sm:text-2xl font-light mb-10 opacity-80 max-w-3xl mx-auto">
+                The Epic Mac Fan Controller (EMFC) provides direct, root-level control over fan speeds to stabilize legacy Apple hardware running Linux distributions.
+            </p>
+            <div class="mb-14">
+                <a href="#download" class="inline-block px-10 py-4 rounded-full text-xl font-bold text-white btn-primary uppercase tracking-wider">
+                    Get the App (Linux)
+                </a>
+            </div>
+
+            <!-- GUI Preview Image Container -->
+            <div class="max-w-4xl mx-auto rounded-xl overflow-hidden transform transition duration-500 hover:scale-[1.01] shadow-[0_0_40px_rgba(8,145,178,0.2)] border-4 border-cyan-600/50">
+                <!-- Image source updated to preview.png -->
+                <img 
+                    src="preview.png" 
+                    alt="Preview of the EMFC Python GUI showing fan speed and temperature controls." 
+                    class="w-full h-auto object-cover"
+                    onerror="this.onerror=null; this.src='https://placehold.co/1000x550/1f2937/ffffff?text=EMFC+GUI+Preview';"
+                >
+            </div>
+        </div>
+    </section>
+    
+    <!-- Key Features Section -->
+    <section id="features" class="py-16 sm:py-28 bg-gray-900 border-t border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-extrabold text-center mb-16 text-white">Unleash Full Performance</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                <!-- Feature 1: Card 1 (Font Awesome: fa-bolt) -->
+                <div class="flex flex-col p-8 bg-gray-800/60 rounded-xl border border-gray-700 shadow-xl transition duration-300 hover:bg-gray-700/50 hover:shadow-cyan-500/10">
+                    <div class="p-4 rounded-full bg-cyan-600 text-white w-min mb-5">
+                        <i class="fas fa-bolt h-8 w-8 text-lg flex items-center justify-center"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3 text-white">Peak Performance</h3>
+                    <p class="text-gray-400">Manually push fan RPMs past stock limits to keep the CPU, GPU, and crucial sensors cool during high-load computing.</p>
+                </div>
+
+                <!-- Feature 2: Card 2 (Font Awesome: fa-desktop) -->
+                <div class="flex flex-col p-8 bg-gray-800/60 rounded-xl border border-gray-700 shadow-xl transition duration-300 hover:bg-gray-700/50 hover:shadow-cyan-500/10">
+                    <div class="p-4 rounded-full bg-cyan-600 text-white w-min mb-5">
+                        <i class="fas fa-desktop h-8 w-8 text-lg flex items-center justify-center"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3 text-white">Intuitive PyQt GUI</h3>
+                    <p class="text-gray-400">A clean, straightforward graphical interface to monitor temperatures and adjust fan speeds without complex terminal commands.</p>
+                </div>
+
+                <!-- Feature 3: Card 3 (Google Material Symbols: lock_open) -->
+                <div class="flex flex-col p-8 bg-gray-800/60 rounded-xl border border-gray-700 shadow-xl transition duration-300 hover:bg-gray-700/50 hover:shadow-cyan-500/10">
+                    <div class="p-4 rounded-full bg-cyan-600 text-white w-min mb-5">
+                        <span class="material-symbols-outlined text-white h-8 w-8 flex items-center justify-center">
+                            lock_open
+                        </span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3 text-white">Sudo/Root Access</h3>
+                    <p class="text-gray-400">Built to handle the root privilege requirements of the underlying Mac kernel driver (`applesmc`) for effective control.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Compatibility Section (Personalized) -->
+    <section id="compatibility" class="py-16 sm:py-28 bg-dark-blue">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl font-extrabold mb-8 text-white">Confirmed Compatibility</h2>
+            <p class="text-xl text-gray-400 mb-10">
+                EMFC is engineered to work reliably on specific Apple hardware using the Linux `applesmc` kernel module for fan control.
+            </p>
+
+            <div class="p-8 md:p-12 bg-gray-900 rounded-2xl shadow-2xl border-2 border-cyan-600/80">
+                <h3 class="text-3xl font-extrabold text-cyan-400 mb-6 border-b border-gray-700 pb-3">Tested & Optimized Hardware</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 text-left">
+                    <div class="space-y-2">
+                        <p class="text-lg font-bold text-white flex items-center">
+                            <!-- Font Awesome: fa-laptop -->
+                            <i class="fas fa-laptop h-6 w-6 text-cyan-600 mr-2"></i>
+                            Mac Model
+                        </p>
+                        <p class="text-xl font-medium text-gray-300 pl-8">MacBook Pro 8,1 (Late 2011)</p>
+                    </div>
+                    <div class="space-y-2">
+                        <p class="text-lg font-bold text-white flex items-center">
+                            <!-- Font Awesome: fa-terminal -->
+                            <i class="fas fa-terminal h-6 w-6 text-cyan-600 mr-2"></i>
+                            Operating System
+                        </p>
+                        <p class="text-xl font-medium text-gray-300 pl-8">Zorin OS 17.3 (Linux)</p>
+                    </div>
+                </div>
+                <div class="mt-8 pt-4 border-t border-gray-700">
+                     <p class="text-lg font-bold text-red-400">
+                        CORE REQUIREMENT: Linux `applesmc` kernel module must be active.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download/Instructions Section -->
+    <section id="download" class="py-16 sm:py-28 bg-gray-900 border-t border-gray-800">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-extrabold text-center mb-16 text-white">Get Started: Three Simple Steps</h2>
+            
+            <div class="space-y-8">
+                
+                <!-- Step 1: Dependency -->
+                <div class="p-6 rounded-xl border border-gray-700 bg-gray-800 flex items-start space-x-4 shadow-lg">
+                    <span class="text-3xl font-black text-cyan-500 mt-1 flex-shrink-0">1.</span>
+                    <div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Install Sensor Utility</h3>
+                        <p class="text-gray-400 mb-3">Ensure your system has the Python `psutil` dependency installed for real-time temperature monitoring. This is a common requirement on many Linux systems.</p>
+                        <pre class="bg-black/70 text-green-300 p-3 rounded-lg overflow-x-auto text-sm border border-gray-700"><code>sudo apt install python3-psutil</code></pre>
+                    </div>
+                </div>
+
+                <!-- Step 2: Download -->
+                <div class="p-6 rounded-xl border border-gray-700 bg-gray-800 flex items-start space-x-4 shadow-lg">
+                    <span class="text-3xl font-black text-cyan-500 mt-1 flex-shrink-0">2.</span>
+                    <div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Download the Executable</h3>
+                        <p class="text-gray-400">Download the PyInstaller-built standalone executable for Linux x64.</p>
+                        <!-- UPDATED LINK HERE -->
+                        <a href="https://drive.google.com/file/d/1Qr_CrfuzNq50jB0xcymPxVJfITiFP5KX/view?usp=sharing" class="inline-flex items-center text-white btn-primary px-6 py-3 rounded-full font-bold mt-4 text-lg" target="_blank">
+                            <!-- Font Awesome: fa-download -->
+                            <i class="fas fa-download h-6 w-6 mr-3"></i>
+                            Download EMFC App (Linux x64)
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Step 3: Execution -->
+                <div class="p-6 rounded-xl border border-gray-700 bg-gray-800 flex items-start space-x-4 shadow-lg">
+                    <span class="text-3xl font-black text-cyan-500 mt-1 flex-shrink-0">3.</span>
+                    <div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Run with Root Permissions</h3>
+                        <p class="text-gray-400 mb-3">Make the file executable and run it. The application will handle the necessary password prompt for root access to the kernel module.</p>
+                        <pre class="bg-black/70 text-green-300 p-3 rounded-lg overflow-x-auto text-sm border border-gray-700"><code>chmod +x EMFC_executable_name <br> ./EMFC_executable_name</code></pre>
+                    </div>
+                </div>
+
+            </div>
+            
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 py-10 text-center border-t border-gray-800">
+        <p class="text-gray-500 text-sm">
+            EMFC - Epic Mac Fan Controller &copy; 2025 | Developed by a Mac/Linux Enthusiast.
+        </p>
+        <p class="text-red-500/70 text-xs mt-3 max-w-xl mx-auto">
+            Disclaimer: Manual fan control carries risks. Use responsibly. Monitoring system temperatures is strongly recommended to prevent potential hardware damage.
+        </p>
+    </footer>
+
+</body>
+</html>
